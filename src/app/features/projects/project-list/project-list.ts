@@ -1,15 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ParallaxDirective } from '../../../shared/directives/parallax.directive';
+import { Project } from '../../../core/models/portfolio.models';
+import { FormatUtils } from '../../../core/utils/format.utils';
 
+/**
+ * ProjectListComponent displays a grid of featured projects
+ * Uses OnPush change detection for better performance
+ */
 @Component({
   selector: 'app-project-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ParallaxDirective],
   templateUrl: './project-list.html',
-  styleUrls: ['./project-list.css']
+  styleUrls: ['./project-list.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProjectListComponent {
-  projects = [
+  /**
+   * List of featured projects to display
+   */
+  readonly projects: readonly Project[] = [
     {
       title: 'Bus Ticket Booking System',
       description: 'A comprehensive Java-based system for managing bus routes, bookings, and passenger reservations. Features include real-time seat availability, payment processing, and route management.',
@@ -67,8 +78,22 @@ export class ProjectListComponent {
     }
   ];
 
+  /**
+   * Formats a number with leading zeros
+   * @param num - Number to format
+   * @returns Formatted string with leading zeros
+   */
   formatNumber(num: number): string {
-    return num.toString().padStart(2, '0');
+    return FormatUtils.formatNumber(num);
+  }
+
+  /**
+   * TrackBy function for ngFor optimization
+   * @param index - Index of the item
+   * @param project - Project item
+   * @returns Unique identifier for the project
+   */
+  trackByProject(index: number, project: Project): string {
+    return project.link; // Use link as unique identifier
   }
 }
-
