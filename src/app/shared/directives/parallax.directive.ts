@@ -1,4 +1,5 @@
-import { Directive, ElementRef, HostListener, Input, Renderer2, OnInit, OnDestroy } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, Renderer2, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 /**
  * ParallaxDirective - Adds smooth parallax scrolling effect to elements
@@ -21,14 +22,19 @@ export class ParallaxDirective implements OnInit, OnDestroy {
    */
   @Input() parallaxRatio: number = 0.5;
 
-  private scrollHandler: (() => void) | null = null;
+  private isBrowser: boolean;
 
   constructor(
     private el: ElementRef,
-    private renderer: Renderer2
-  ) {}
+    private renderer: Renderer2,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit(): void {
+    if (!this.isBrowser) return;
+
     // Set initial position
     this.renderer.setStyle(this.el.nativeElement, 'transition', 'transform 0.1s ease-out');
     this.renderer.setStyle(this.el.nativeElement, 'will-change', 'transform');
@@ -39,16 +45,20 @@ export class ParallaxDirective implements OnInit, OnDestroy {
 
   @HostListener('window:scroll', [])
   onWindowScroll(): void {
-    this.updateParallax();
+    if (this.isBrowser) {
+      this.updateParallax();
+    }
   }
 
   private updateParallax(): void {
-    const scrolled = window.pageYOffset;
+    if (!this.isBrowser) return;
+
+    const scrolled = window.scrollY; // Use scrollY instead of pageYOffset
     const elementTop = this.el.nativeElement.getBoundingClientRect().top + scrolled;
-    const windowHeight = window.innerHeight;
     
-    // Calculate parallax offset
-    const offset = (scrolled - elementTop + windowHeight) * this.parallaxRatio;
+    // Calculate simple parallax offset based on scroll position relative to element
+    // This calculation ensures the element moves at a different speed than scroll
+    const offset = -(scrolled * this.parallaxRatio);
     
     // Apply transform
     this.renderer.setStyle(
@@ -59,6 +69,8 @@ export class ParallaxDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (!this.isBrowser) return;
+    
     // Cleanup
     this.renderer.removeStyle(this.el.nativeElement, 'transform');
     this.renderer.removeStyle(this.el.nativeElement, 'will-change');
