@@ -1,0 +1,50 @@
+<header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-blue-500/20" style="height: var(--header-height); border-radius: 0; backdrop-filter: blur(20px);">
+  <nav class="container-custom h-full flex items-center justify-between">
+    <!-- Logo with Animation -->
+    <a routerLink="/" class="text-2xl font-bold font-mono-custom group flex items-center gap-2">
+      <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shadow-blue-500/50">
+        <span class="text-white text-sm">PS</span>
+      </div>
+      <span class="text-white hidden md:inline">Prabanjan<span class="text-blue-400">_</span>S</span>
+    </a>
+
+    <!-- Navigation -->
+    <ul class="hidden md:flex items-center gap-10">
+      <li>
+        <a routerLink="/home" routerLinkActive="text-blue-400 border-b-2 border-blue-400"
+           class="font-mono-custom text-sm hover:text-blue-400 transition-all pb-1 relative group">
+          <span class="relative z-10">home</span>
+          <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/projects" routerLinkActive="text-blue-400 border-b-2 border-blue-400"
+           class="font-mono-custom text-sm hover:text-blue-400 transition-all pb-1 relative group">
+          <span class="relative z-10">works</span>
+          <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/contact" routerLinkActive="text-blue-400 border-b-2 border-blue-400"
+           class="font-mono-custom text-sm hover:text-blue-400 transition-all pb-1 relative group">
+          <span class="relative z-10">contact</span>
+          <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/prabanjan127" target="_blank"
+           class="px-5 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg transition-all duration-300 font-mono-custom text-sm shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-105 flex items-center gap-2">
+          <i class="fab fa-github"></i>
+          <span>GitHub</span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button class="md:hidden text-blue-400 hover:text-blue-300 transition-colors p-2">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </nav>
+</header>

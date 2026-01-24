@@ -1,0 +1,12 @@
+/* Project Item - Visible by default */
+.reveal-child {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+:host-context(.in-view) .reveal-child,
+:host.in-view .reveal-child {
+  opacity: 1;
+  transform: translateY(0);
+}

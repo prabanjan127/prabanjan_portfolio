@@ -1,0 +1,25 @@
+/* Timeline Item Animation - Simplified */
+/* Items start visible but animate when scrolled into view */
+
+.reveal-child {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Animation effect when parent gets .in-view class */
+:host.in-view .reveal-child,
+:host-context(.in-view) .reveal-child {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Glass card hover effects */
+app-glass-card {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+app-glass-card:hover {
+  transform: translateY(-5px);
+}

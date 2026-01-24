@@ -1,0 +1,177 @@
+<section class="relative w-full h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
+  <!-- 3D Background -->
+  <app-three-scene class="absolute inset-0 z-0"></app-three-scene>
+
+  <!-- Animated Particles Effect -->
+  <div class="absolute inset-0 z-[1] opacity-30">
+    <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
+    <div class="absolute top-1/2 right-1/3 w-1 h-1 bg-cyan-400 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-1/3 left-1/2 w-3 h-3 bg-purple-400 rounded-full animate-bounce" style="animation-delay: 0.5s;"></div>
+    <div class="absolute top-2/3 right-1/4 w-2 h-2 bg-pink-400 rounded-full animate-ping" style="animation-delay: 1.5s;"></div>
+  </div>
+
+  <!-- Gradient Mesh -->
+  <div class="absolute inset-0 z-[1] bg-gradient-to-br from-blue-600/10 via-transparent to-purple-600/10 animate-gradient" style="background-size: 400% 400%;"></div>
+
+  <!-- Content Overlay -->
+  <div class="relative z-10 w-full max-w-7xl px-4">
+    <!-- Main Hero Container - Horizontal Layout -->
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+
+      <!-- Left Side: Profile Photo with Cyber Styling -->
+      <div class="flex-shrink-0 animate-float">
+        <div class="relative group">
+          <!-- Animated border rings -->
+          <div class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-purple-500 animate-spin-slow opacity-75 blur-sm group-hover:blur-md transition-all" style="animation-duration: 8s; padding: 3px;"></div>
+          <div class="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 via-pink-400 to-blue-500 animate-spin-slow opacity-50 blur-md" style="animation-duration: 12s; animation-direction: reverse; padding: 5px;"></div>
+
+          <!-- Profile image container -->
+          <div class="relative w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-blue-400/30 shadow-[0_0_50px_rgba(59,130,246,0.5)] group-hover:shadow-[0_0_80px_rgba(59,130,246,0.8)] transition-all duration-500">
+            <img
+              src="assets/images/profile.jpg"
+              alt="Prabanjanakthibabu"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+            <!-- Overlay gradient on hover -->
+            <div class="absolute inset-0 bg-gradient-to-t from-blue-900/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          </div>
+
+          <!-- Corner accents -->
+          <div class="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        </div>
+      </div>
+
+      <!-- Right Side: Name and Content -->
+      <div class="flex-1 text-center lg:text-left">
+
+        <!-- Status Badge -->
+        <div class="inline-block mb-8 animate-float">
+          <div class="relative">
+            <span class="px-5 py-2.5 bg-emerald-500/10 border-2 border-emerald-400/40 rounded-full text-xs font-mono-custom text-emerald-400 tracking-wider uppercase backdrop-blur-md animate-pulse-glow inline-flex items-center gap-3">
+              <span class="relative flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+              </span>
+              Crafting Digital Experiences
+            </span>
+          </div>
+        </div>
+
+        <!-- Main Heading with Creative Typography - Charlie Template Inspired -->
+        <h1 #heroTitle class="text-[clamp(4rem,12vw,9rem)] font-bold leading-[0.85] mb-6 tracking-tighter\">
+          <span class="block text-white hover:scale-105 transition-transform duration-300\">Hi! I'm</span>
+          <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 animate-gradient glow-text hover:scale-110 transition-transform duration-300\">Prabanjan</span>
+        </h1>
+
+        <!-- Animated Subtitle -->
+        <div class="h-12 mb-10 flex justify-center lg:justify-start items-center">
+          <span class="text-blue-400/60 font-mono-custom mr-2">&gt;</span>
+          <p #heroSubtitle class="text-lg md:text-2xl font-mono-custom text-gray-300"></p>
+          <span class="w-[3px] h-8 bg-blue-400 ml-2 animate-blink shadow-[0_0_10px_rgba(59,130,246,0.8)]"></span>
+        </div>
+
+        <!-- Tech Stack Pills -->
+        <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
+          <span class="group px-4 py-2 bg-blue-500/10 border border-blue-400/30 rounded-full text-sm font-mono-custom text-blue-300 hover:bg-blue-500/20 hover:border-blue-400/60 hover:scale-105 transition-all cursor-default backdrop-blur-sm">
+            <i class="fas fa-code text-blue-400 mr-2"></i>Angular
+          </span>
+          <span class="group px-4 py-2 bg-cyan-500/10 border border-cyan-400/30 rounded-full text-sm font-mono-custom text-cyan-300 hover:bg-cyan-500/20 hover:border-cyan-400/60 hover:scale-105 transition-all cursor-default backdrop-blur-sm">
+            <i class="fab fa-node text-cyan-400 mr-2"></i>Node.js
+          </span>
+          <span class="group px-4 py-2 bg-purple-500/10 border border-purple-400/30 rounded-full text-sm font-mono-custom text-purple-300 hover:bg-purple-500/20 hover:border-purple-400/60 hover:scale-105 transition-all cursor-default backdrop-blur-sm">
+            <i class="fas fa-shield-alt text-purple-400 mr-2"></i>Security
+          </span>
+          <span class="group px-4 py-2 bg-pink-500/10 border border-pink-400/30 rounded-full text-sm font-mono-custom text-pink-300 hover:bg-pink-500/20 hover:border-pink-400/60 hover:scale-105 transition-all cursor-default backdrop-blur-sm">
+            <i class="fas fa-mobile-alt text-pink-400 mr-2"></i>Flutter
+          </span>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div #ctaButton class="flex flex-col md:flex-row gap-6 justify-center lg:justify-start items-center lg:items-start mb-10">
+          <a href="#projects" class="group relative px-10 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold tracking-wide hover:from-blue-600 hover:to-blue-700 transition-all duration-300 rounded-xl overflow-hidden shadow-lg shadow-blue-500/50 hover:shadow-blue-500/70 hover:scale-105">
+            <span class="relative z-10 flex items-center gap-3">
+              <i class="fas fa-rocket"></i>
+              View Projects
+              <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </span>
+          </a>
+
+          <a href="mailto:prabanjansakthibabu@gmail.com" class="group px-10 py-4 border-2 border-blue-400/40 hover:border-blue-400 text-white font-mono-custom text-sm hover:bg-blue-500/10 rounded-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm">
+            <i class="far fa-envelope mr-2"></i>Contact_Me
+          </a>
+        </div>
+
+        <!-- Stats Section - Inspired by Tajmirul's Portfolio -->
+        <div class="grid grid-cols-3 gap-6 lg:gap-8 mt-16 pt-16 border-t border-blue-500/20">
+          <!-- Years of Experience -->
+          <div class="text-center lg:text-left group">
+            <div class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 mb-2 group-hover:scale-110 transition-transform">
+              2+
+            </div>
+            <div class="text-xs md:text-sm text-gray-400 font-mono-custom uppercase tracking-wider">
+              Years of<br/>Experience
+            </div>
+          </div>
+
+          <!-- Projects Completed -->
+          <div class="text-center group">
+            <div class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-2 group-hover:scale-110 transition-transform">
+              15+
+            </div>
+            <div class="text-xs md:text-sm text-gray-400 font-mono-custom uppercase tracking-wider">
+              Projects<br/>Completed
+            </div>
+          </div>
+
+          <!-- Technologies -->
+          <div class="text-center lg:text-right group">
+            <div class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400 mb-2 group-hover:scale-110 transition-transform">
+              10+
+            </div>
+            <div class="text-xs md:text-sm text-gray-400 font-mono-custom uppercase tracking-wider">
+              Technologies<br/>Mastered
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Links with Creative Layout -->
+        <div class="flex justify-center lg:justify-start gap-8 mt-10">
+          <a href="https://github.com/prabanjan127" target="_blank"
+         class="group relative w-12 h-12 flex items-center justify-center rounded-full border border-blue-400/30 hover:border-blue-400 text-gray-400 hover:text-blue-400 transition-all hover:scale-125 hover:rotate-12 backdrop-blur-sm bg-blue-500/5 hover:bg-blue-500/20">
+            <i class="fab fa-github text-xl"></i>
+            <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <span class="text-xs font-mono-custom text-blue-400 whitespace-nowrap">GitHub</span>
+            </div>
+          </a>
+          <a href="https://linkedin.com/in/prabanjan-s/" target="_blank"
+         class="group relative w-12 h-12 flex items-center justify-center rounded-full border border-cyan-400/30 hover:border-cyan-400 text-gray-400 hover:text-cyan-400 transition-all hover:scale-125 hover:rotate-12 backdrop-blur-sm bg-cyan-500/5 hover:bg-cyan-500/20">
+            <i class="fab fa-linkedin text-xl"></i>
+            <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <span class="text-xs font-mono-custom text-cyan-400 whitespace-nowrap">LinkedIn</span>
+            </div>
+          </a>
+          <a href="mailto:prabanjansakthibabu@gmail.com"
+         class="group relative w-12 h-12 flex items-center justify-center rounded-full border border-purple-400/30 hover:border-purple-400 text-gray-400 hover:text-purple-400 transition-all hover:scale-125 hover:rotate-12 backdrop-blur-sm bg-purple-500/5 hover:bg-purple-500/20">
+            <i class="fas fa-envelope text-xl"></i>
+            <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <span class="text-xs font-mono-custom text-purple-400 whitespace-nowrap">Email</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Enhanced Scroll Indicator -->
+  <div class="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3 opacity-70 hover:opacity-100 transition-all">
+    <span class="text-[11px] font-mono-custom uppercase tracking-[0.3em] text-blue-400 animate-pulse">Explore</span>
+    <div class="w-[2px] h-20 bg-gradient-to-b from-blue-400 via-cyan-400 to-transparent animate-pulse"></div>
+    <i class="fas fa-chevron-down text-blue-400 animate-bounce"></i>
+  </div>
+</section>

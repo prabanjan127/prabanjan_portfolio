@@ -1,0 +1,200 @@
+<section class="min-h-screen py-32 px-4 relative overflow-hidden">
+  <!-- Animated Background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-transparent to-purple-600/5"></div>
+
+  <div class="container-custom relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16 animate-fadeInUp">
+      <h2 class="text-5xl md:text-7xl font-bold mb-6">
+        <span class="text-white">Get In</span>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400"> Touch</span>
+      </h2>
+      <p class="text-gray-400 text-lg font-mono-custom max-w-2xl mx-auto">
+        Have a project in mind or just want to chat about tech? Drop me a message!
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+      <!-- Contact Form -->
+      <div class="order-2 lg:order-1 animate-fadeInLeft">
+        <form #contactForm="ngForm" (ngSubmit)="onSubmit()" class="space-y-6">
+          <!-- Name Field -->
+          <div class="group">
+            <label for="name" class="block text-sm font-mono-custom text-blue-400 mb-2">
+              <i class="fas fa-user mr-2"></i>Your Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              [(ngModel)]="formData.name"
+              required
+              minlength="2"
+              #name="ngModel"
+              class="w-full px-6 py-4 bg-blue-500/5 border-2 border-blue-400/20 rounded-xl text-white font-mono-custom focus:border-blue-400 focus:bg-blue-500/10 transition-all outline-none backdrop-blur-sm"
+              placeholder="John Doe"
+            />
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="mt-2 text-red-400 text-sm font-mono-custom">
+              <span *ngIf="name.errors?.['required']">Name is required</span>
+              <span *ngIf="name.errors?.['minlength']">Name must be at least 2 characters</span>
+            </div>
+          </div>
+
+          <!-- Email Field -->
+          <div class="group">
+            <label for="email" class="block text-sm font-mono-custom text-cyan-400 mb-2">
+              <i class="fas fa-envelope mr-2"></i>Your Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              [(ngModel)]="formData.email"
+              required
+              email
+              #email="ngModel"
+              class="w-full px-6 py-4 bg-cyan-500/5 border-2 border-cyan-400/20 rounded-xl text-white font-mono-custom focus:border-cyan-400 focus:bg-cyan-500/10 transition-all outline-none backdrop-blur-sm"
+              placeholder="john@example.com"
+            />
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="mt-2 text-red-400 text-sm font-mono-custom">
+              <span *ngIf="email.errors?.['required']">Email is required</span>
+              <span *ngIf="email.errors?.['email']">Please enter a valid email</span>
+            </div>
+          </div>
+
+          <!-- Subject Field -->
+          <div class="group">
+            <label for="subject" class="block text-sm font-mono-custom text-purple-400 mb-2">
+              <i class="fas fa-tag mr-2"></i>Subject
+            </label>
+            <input
+              id="subject"
+              type="text"
+              name="subject"
+              [(ngModel)]="formData.subject"
+              required
+              #subject="ngModel"
+              class="w-full px-6 py-4 bg-purple-500/5 border-2 border-purple-400/20 rounded-xl text-white font-mono-custom focus:border-purple-400 focus:bg-purple-500/10 transition-all outline-none backdrop-blur-sm"
+              placeholder="Project Inquiry"
+            />
+            <div *ngIf="subject.invalid && (subject.dirty || subject.touched)" class="mt-2 text-red-400 text-sm font-mono-custom">
+              <span *ngIf="subject.errors?.['required']">Subject is required</span>
+            </div>
+          </div>
+
+          <!-- Message Field -->
+          <div class="group">
+            <label for="message" class="block text-sm font-mono-custom text-pink-400 mb-2">
+              <i class="fas fa-comment-dots mr-2"></i>Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              [(ngModel)]="formData.message"
+              required
+              minlength="10"
+              #message="ngModel"
+              rows="6"
+              class="w-full px-6 py-4 bg-pink-500/5 border-2 border-pink-400/20 rounded-xl text-white font-mono-custom focus:border-pink-400 focus:bg-pink-500/10 transition-all outline-none resize-none backdrop-blur-sm"
+              placeholder="Tell me about your project or idea..."
+            ></textarea>
+            <div *ngIf="message.invalid && (message.dirty || message.touched)" class="mt-2 text-red-400 text-sm font-mono-custom">
+              <span *ngIf="message.errors?.['required']">Message is required</span>
+              <span *ngIf="message.errors?.['minlength']">Message must be at least 10 characters</span>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            [disabled]="!contactForm.valid || isSubmitting"
+            class="w-full py-4 px-8 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 shadow-lg shadow-blue-500/50"
+          >
+            <span *ngIf="!isSubmitting" class="flex items-center justify-center gap-3">
+              <i class="fas fa-paper-plane"></i>
+              Send Message
+            </span>
+            <span *ngIf="isSubmitting" class="flex items-center justify-center gap-3">
+              <i class="fas fa-spinner fa-spin"></i>
+              Sending...
+            </span>
+          </button>
+
+          <!-- Success/Error Messages -->
+          <div *ngIf="submitSuccess" class="p-4 bg-emerald-500/10 border border-emerald-400/30 rounded-xl text-emerald-400 font-mono-custom text-sm flex items-center gap-3">
+            <i class="fas fa-check-circle"></i>
+            Message sent successfully! I'll get back to you soon.
+          </div>
+          <div *ngIf="submitError" class="p-4 bg-red-500/10 border border-red-400/30 rounded-xl text-red-400 font-mono-custom text-sm flex items-center gap-3">
+            <i class="fas fa-exclamation-circle"></i>
+            {{ submitError }}
+          </div>
+        </form>
+      </div>
+
+      <!-- Contact Info & Social Links -->
+      <div class="order-1 lg:order-2 space-y-8 animate-fadeInRight">
+        <!-- Direct Contact Cards -->
+        <div class="space-y-6">
+          <h3 class="text-2xl font-bold text-white mb-6 font-mono-custom">
+            <i class="fas fa-address-card mr-3 text-blue-400"></i>Direct Contact
+          </h3>
+
+          <!-- Email Card -->
+          <a href="mailto:prabanjansakthibabu@gmail.com"
+             class="block group p-6 bg-blue-500/5 border-2 border-blue-400/20 rounded-xl hover:border-blue-400/60 hover:bg-blue-500/10 transition-all backdrop-blur-sm">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i class="fas fa-envelope text-2xl text-blue-400"></i>
+              </div>
+              <div>
+                <p class="text-sm text-gray-400 font-mono-custom">Email</p>
+                <p class="text-white font-mono-custom group-hover:text-blue-400 transition-colors">prabanjansakthibabu@gmail.com</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- LinkedIn Card -->
+          <a href="https://linkedin.com/in/prabanjan-s/" target="_blank"
+             class="block group p-6 bg-cyan-500/5 border-2 border-cyan-400/20 rounded-xl hover:border-cyan-400/60 hover:bg-cyan-500/10 transition-all backdrop-blur-sm">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-full bg-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i class="fab fa-linkedin text-2xl text-cyan-400"></i>
+              </div>
+              <div>
+                <p class="text-sm text-gray-400 font-mono-custom">LinkedIn</p>
+                <p class="text-white font-mono-custom group-hover:text-cyan-400 transition-colors">Connect on LinkedIn</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- GitHub Card -->
+          <a href="https://github.com/prabanjan127" target="_blank"
+             class="block group p-6 bg-purple-500/5 border-2 border-purple-400/20 rounded-xl hover:border-purple-400/60 hover:bg-purple-500/10 transition-all backdrop-blur-sm">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-full bg-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i class="fab fa-github text-2xl text-purple-400"></i>
+              </div>
+              <div>
+                <p class="text-sm text-gray-400 font-mono-custom">GitHub</p>
+                <p class="text-white font-mono-custom group-hover:text-purple-400 transition-colors">Check out my repositories</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Quote or Additional Info -->
+        <div class="p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-400/20 rounded-xl backdrop-blur-sm">
+          <p class="text-gray-300 font-mono-custom italic text-sm leading-relaxed">
+            "Let's build something amazing together! Whether it's a new project, collaboration opportunity, or just a tech chat, I'm always excited to connect with fellow creators and innovators."
+          </p>
+          <p class="text-blue-400 font-mono-custom text-sm mt-4">- Prabanjan</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Glow Effects -->
+  <div class="absolute top-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+  <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl opacity-20 animate-pulse" style="animation-delay: 1s;"></div>
+</section>

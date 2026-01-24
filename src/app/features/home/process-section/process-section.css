@@ -1,0 +1,52 @@
+.process-card {
+  position: relative;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+:host-context(.in-view) .process-card,
+:host.in-view .process-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays kept for when animation is working */
+.process-card.delay-100 { transition-delay: 0.1s; }
+.process-card.delay-200 { transition-delay: 0.2s; }
+.process-card.delay-300 { transition-delay: 0.3s; }
+.process-card.delay-400 { transition-delay: 0.4s; }
+
+/* Card Hover Effects */
+.process-card .glass-panel {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.process-card:hover .glass-panel {
+  transform: translateY(-12px) scale(1.03);
+}
+
+/* Icon Animation */
+.process-card i {
+  transition: transform 0.3s ease;
+}
+
+.process-card:hover i {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  /* On tablet and mobile, cards stack vertically - arrows hidden via Tailwind's lg:flex */
+}
+
+@media (max-width: 768px) {
+  .process-card .glass-panel {
+    padding: 1.5rem;
+  }
+
+  .process-card h3 {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,10 @@
+:host {
+  display: block;
+}
+
+header {
+  background: rgba(5, 5, 5, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--glass-border);
+}
