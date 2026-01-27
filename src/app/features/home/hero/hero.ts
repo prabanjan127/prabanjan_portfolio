@@ -4,12 +4,9 @@ import { ThreeSceneComponent } from '../three-scene/three-scene';
 import { TechBadgeComponent } from '../../../shared/ui/tech-badge/tech-badge.component';
 import { StatCardComponent } from '../../../shared/ui/stat-card/stat-card.component';
 import { SocialLinkComponent } from '../../../shared/ui/social-link/social-link.component';
+import { CircularBadgeComponent } from '../../../shared/ui/circular-badge/circular-badge.component';
 import { ParallaxDirective } from '../../../shared/directives/parallax.directive';
 import { SocialLink, Stat } from '../../../core/models/portfolio.models';
-import { gsap } from 'gsap';
-import { TextPlugin } from 'gsap/TextPlugin';
-
-gsap.registerPlugin(TextPlugin);
 
 /**
  * HeroComponent - Main hero section with animated introduction
@@ -24,6 +21,7 @@ gsap.registerPlugin(TextPlugin);
     TechBadgeComponent,
     StatCardComponent,
     SocialLinkComponent,
+    CircularBadgeComponent,
     ParallaxDirective
   ],
   templateUrl: './hero.html',
@@ -79,7 +77,13 @@ export class HeroComponent implements AfterViewInit {
   /**
    * Initialize GSAP animations for hero section
    */
-  private initAnimations(): void {
+  private async initAnimations(): Promise<void> {
+    // Dynamically import GSAP and TextPlugin to avoid SSR issues
+    const { gsap } = await import('gsap');
+    const { TextPlugin } = await import('gsap/TextPlugin');
+    
+    gsap.registerPlugin(TextPlugin);
+    
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
     tl.from(this.heroTitle.nativeElement, {

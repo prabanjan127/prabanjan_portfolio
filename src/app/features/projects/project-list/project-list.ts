@@ -14,7 +14,17 @@ import { FormatUtils } from '../../../core/utils/format.utils';
   imports: [CommonModule, ParallaxDirective],
   templateUrl: './project-list.html',
   styleUrls: ['./project-list.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: [`
+    :host {
+      display: block;
+      position: relative;
+      background: var(--section-gradient-2);
+      backdrop-filter: blur(12px);
+      padding-bottom: 4rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+  `]
 })
 export class ProjectListComponent {
   /**

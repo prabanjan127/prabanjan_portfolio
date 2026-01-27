@@ -7,7 +7,15 @@ import { GlassCardComponent } from '../../../shared/ui/glass-card/glass-card';
   standalone: true,
   imports: [CommonModule, GlassCardComponent],
   templateUrl: './timeline.html',
-  styleUrls: ['./timeline.css']
+  styleUrls: ['./timeline.css'],
+  styles: [`
+    :host {
+      display: block;
+      position: relative;
+      background: var(--section-gradient-1);
+      backdrop-filter: blur(8px);
+    }
+  `]
 })
 export class TimelineComponent {
   experiences = [

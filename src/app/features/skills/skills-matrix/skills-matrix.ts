@@ -6,7 +6,14 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './skills-matrix.html',
-  styleUrls: ['./skills-matrix.css']
+  styleUrls: ['./skills-matrix.css'],
+  styles: [`
+    :host {
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+  `]
 })
 export class SkillsMatrixComponent {
   skillCategories = [

@@ -1,0 +1,118 @@
+<section class="tech-showcase-section">
+    <div class="container-custom">
+        <!-- Section Header -->
+        <div class="text-center mb-20 reveal-fade">
+            <h2
+                class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+                <span class="text-neon">&lt;</span>Skills & Technologies<span class="text-neon">/&gt;</span>
+            </h2>
+            <p class="text-gray-300 text-xl max-w-3xl mx-auto font-light">
+                Mastering the full spectrum of modern development - from frontend frameworks to backend systems,
+                databases to mobile platforms
+            </p>
+        </div>
+
+        <!-- Galaxy Visualization -->
+        <div class="tech-galaxy-wrapper">
+            <div class="tech-orbit-container" #galaxyCanvas>
+                <!-- Central Core with enhanced visuals -->
+                <div class="central-core">
+                    <div class="core-rings">
+                        <div class="core-ring ring-1"></div>
+                        <div class="core-ring ring-2"></div>
+                        <div class="core-ring ring-3"></div>
+                    </div>
+                    <div class="core-content">
+                        <div class="core-icon">
+                            <svg viewBox="0 0 24 24" class="icon-svg">
+                                <path fill="currentColor"
+                                    d="M12 2L2 7V17L12 22L22 17V7L12 2M12 4.03L19.5 8.26V15.74L12 19.97L4.5 15.74V8.26L12 4.03M12 6C9.79 6 8 7.79 8 10S9.79 14 12 14 16 12.21 16 10 14.21 6 12 6M12 8C13.1 8 14 8.9 14 10S13.1 12 12 12 10 11.1 10 10 10.9 8 12 8Z" />
+                            </svg>
+                        </div>
+                        <div class="core-text">
+                            <div class="core-title">Full Stack</div>
+                            <div class="core-subtitle">Developer</div>
+                        </div>
+                    </div>
+                    <div class="core-glow"></div>
+                </div>
+
+                <!-- Orbit Paths with enhanced visuals -->
+                <svg class="orbit-svg" viewBox="0 0 800 800">
+                    <defs>
+                        <linearGradient id="orbitGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgba(59,130,246,0.4);stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:rgba(139,92,246,0.2);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:rgba(236,72,153,0.4);stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                            <feMerge>
+                                <feMergeNode in="coloredBlur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <circle cx="400" cy="400" r="140" fill="none" stroke="url(#orbitGradient1)" stroke-width="1"
+                        opacity="0.3" class="orbit-path orbit-1" />
+                    <circle cx="400" cy="400" r="220" fill="none" stroke="url(#orbitGradient1)" stroke-width="1"
+                        opacity="0.3" stroke-dasharray="5,5" class="orbit-path orbit-2" />
+                    <circle cx="400" cy="400" r="300" fill="none" stroke="url(#orbitGradient1)" stroke-width="1"
+                        opacity="0.3" stroke-dasharray="10,5" class="orbit-path orbit-3" />
+                </svg>
+
+                <!-- Tech Icons with enhanced styling -->
+                <div *ngFor="let tech of techStack; let i = index" class="orbit-item" [ngStyle]="getOrbitStyle(tech)"
+                    [attr.data-index]="i" [attr.data-tech]="tech.name">
+                    <div class="tech-bubble">
+                        <div class="bubble-glow"></div>
+                        <div class="bubble-content">
+                            <svg [attr.viewBox]="'0 0 24 24'" class="tech-icon-svg">
+                                <path [attr.d]="tech.svg" fill="currentColor" />
+                            </svg>
+                        </div>
+                        <div class="bubble-label">
+                            <span>{{ tech.name }}</span>
+                        </div>
+                        <div class="bubble-particles">
+                            <span class="particle" *ngFor="let p of [1,2,3]"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Constellation Lines -->
+                <svg class="constellation-svg" viewBox="0 0 800 800">
+                    <line *ngFor="let line of [1,2,3,4,5,6,7,8]" class="constellation-line"
+                        [attr.x1]="400 + Math.cos(line * 0.785) * 150" [attr.y1]="400 + Math.sin(line * 0.785) * 150"
+                        [attr.x2]="400 + Math.cos(line * 0.785) * 280" [attr.y2]="400 + Math.sin(line * 0.785) * 280"
+                        stroke="rgba(139,92,246,0.1)" stroke-width="1" />
+                </svg>
+
+                <!-- Cosmic Particles -->
+                <div class="cosmic-particles">
+                    <div *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" class="cosmic-particle"
+                        [style.--particle-delay]="i * 0.3 + 's'" [style.--particle-duration]="10 + (i % 5) + 's'"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Stats -->
+        <div class="tech-stats-grid reveal-slide">
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-number">11+</div>
+                <div class="stat-text">Technologies</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🚀</div>
+                <div class="stat-number">∞</div>
+                <div class="stat-text">Possibilities</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💡</div>
+                <div class="stat-number">100%</div>
+                <div class="stat-text">Passion</div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -9,4 +9,21 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './header.html',
   styleUrls: ['./header.css']
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  isMobileMenuOpen = false;
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    // Prevent body scroll when menu is open
+    if (this.isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+
+  closeMobileMenu(): void {
+    this.isMobileMenuOpen = false;
+    document.body.style.overflow = '';
+  }
+}

@@ -26,16 +26,12 @@
           </div>
         </div>
 
-        <!-- Image Background (Placeholder gradient for now) -->
-        <div
-          class="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800 opacity-90 group-hover:opacity-75 transition-opacity duration-700">
-          <!-- Accent gradient -->
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" [ngClass]="{
-                 'bg-gradient-to-br from-blue-500/20 via-transparent to-transparent': i % 3 === 0,
-                 'bg-gradient-to-br from-purple-500/20 via-transparent to-transparent': i % 3 === 1,
-                 'bg-gradient-to-br from-cyan-500/20 via-transparent to-transparent': i % 3 === 2
-               }">
-          </div>
+        <!--Project Image -->
+        <div class="absolute inset-0 overflow-hidden">
+          <img [src]="project.image" [alt]="project.title + ' screenshot'" loading="lazy"
+            class="w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700" />
+          <!-- Overlay for better text readability -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40"></div>
         </div>
 
         <!-- Content -->
