@@ -33,8 +33,8 @@ export class LoadingScreenComponent implements OnInit {
         this.currentQuoteIndex = (this.currentQuoteIndex + 1) % this.developerQuotes.length;
       }, 1500);
 
-      // Hide loader after 2.5 seconds
-      setTimeout(() => {
+      // Smart loading: Hide when content is actually ready
+      const hideLoader = () => {
         this.isLoading = false;
         clearInterval(quoteInterval);
 
@@ -45,14 +45,18 @@ export class LoadingScreenComponent implements OnInit {
             (loadingEl as HTMLElement).style.display = 'none';
           }
         }, 800); // Match CSS fade-out duration
-      }, 2500);
-    } else {
-      // On server, just show it or hide it immediately to avoid blocking hydration?
-      // Usually we want meaningful content on server, loading screen is client-side only enhancement mostly.
-      // But if we hide it on server, there might be a flash.
-      // For now, let's keep isLoading=true but NOT run the interval/timeout logic that touches DOM.
-      // Actually, if we don't set isLoading=false on server, it might render with loading screen.
-      // Let's just wrap the logic and let client handle the removal.
+      };
+
+      // Check if page is already loaded
+      if (document.readyState === 'complete') {
+        hideLoader();
+      } else {
+        // Wait for page to fully load
+        window.addEventListener('load', hideLoader, { once: true });
+        
+        // Fallback: Maximum 2 seconds if load event doesn't fire
+        setTimeout(hideLoader, 2000);
+      }
     }
   }
 
