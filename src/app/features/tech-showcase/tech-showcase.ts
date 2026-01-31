@@ -216,6 +216,16 @@ export class TechShowcaseComponent implements OnInit, OnDestroy {
       delay: 39, 
       size: 48 
     },
+    { 
+      name: 'Go', 
+      svg: 'M20,19V7H4V19H20M20,3A2,2 0 0,1 22,5V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V5C2,3.89 2.9,3 4,3H20M13,17V15H18V17H13M9.58,13L5.57,9L6.96,7.61L12.37,13.03L6.96,18.41L5.57,17L9.58,13Z',
+      color: '#00ADD8', 
+      gradient: 'linear-gradient(135deg, #00ADD8, #007D9C)',
+      orbitRadius: 380, 
+      orbitDuration: 55, 
+      delay: 52, 
+      size: 50 
+    },
   ];
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {

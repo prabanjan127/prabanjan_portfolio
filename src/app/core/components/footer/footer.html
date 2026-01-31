@@ -1,41 +1,44 @@
-<footer class="border-t border-blue-500/20 py-16 mt-20 backdrop-blur-sm bg-[#050816]/50">
+<footer class="border-t border-blue-500/20 py-10 sm:py-12 md:py-16 mt-12 md:mt-20 backdrop-blur-sm bg-[#050816]/50">
   <div class="container-custom">
     <!-- Availability Status (Charlie Template Style) -->
-    <div class="text-center mb-12">
-      <p class="text-3xl md:text-4xl font-bold mb-4">
+    <div class="text-center mb-8 md:mb-12">
+      <p class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">
         <span class="text-white">continuously </span>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">learning & building</span>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">learning &
+          building</span>
       </p>
-      <p class="text-gray-400 font-mono-custom text-sm">
+      <p class="text-gray-400 font-mono-custom text-xs sm:text-sm">
         Focused on crafting exceptional digital experiences through <span class="text-emerald-400">innovation</span>
       </p>
     </div>
 
     <!-- Footer Links & Info -->
-    <div class="flex flex-col md:flex-row justify-between items-center gap-8 border-t border-blue-500/10 pt-8">
+    <div
+      class="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 border-t border-blue-500/10 pt-6 md:pt-8">
       <!-- Copyright -->
-      <div class="text-sm text-gray-400 font-mono-custom">
+      <div class="text-xs sm:text-sm text-gray-400 font-mono-custom text-center md:text-left">
         &copy; {{ currentYear }} Prabanjanakthibabu. Crafted with <span class="text-blue-400">&#9829;</span>
       </div>
 
       <!-- Social Links -->
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-4 sm:gap-6">
         <a href="https://github.com/prabanjan127" target="_blank"
-           class="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
-          <i class="fab fa-github text-xl"></i>
+          class="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
+          <i class="fab fa-github text-lg sm:text-xl"></i>
         </a>
         <a href="https://linkedin.com/in/prabanjan-s/" target="_blank"
-           class="text-gray-400 hover:text-cyan-400 transition-colors transform hover:scale-110">
-          <i class="fab fa-linkedin text-xl"></i>
+          class="text-gray-400 hover:text-cyan-400 transition-colors transform hover:scale-110">
+          <i class="fab fa-linkedin text-lg sm:text-xl"></i>
         </a>
         <a href="mailto:prabanjansakthibabu@gmail.com"
-           class="text-gray-400 hover:text-purple-400 transition-colors transform hover:scale-110">
-          <i class="fas fa-envelope text-xl"></i>
+          class="text-gray-400 hover:text-purple-400 transition-colors transform hover:scale-110">
+          <i class="fas fa-envelope text-lg sm:text-xl"></i>
         </a>
       </div>
 
       <!-- Back to Top -->
-      <button type="button" (click)="scrollToTop()" class="text-gray-400 hover:text-blue-400 transition-all duration-300 text-sm font-mono-custom flex items-center gap-2 hover:scale-110 transform cursor-pointer">
+      <button type="button" (click)="scrollToTop()"
+        class="text-gray-400 hover:text-blue-400 transition-all duration-300 text-xs sm:text-sm font-mono-custom flex items-center gap-2 hover:scale-110 transform cursor-pointer">
         <span>back to top</span>
         <i class="fas fa-arrow-up"></i>
       </button>

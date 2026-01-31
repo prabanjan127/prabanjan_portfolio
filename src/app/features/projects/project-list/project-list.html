@@ -1,21 +1,22 @@
-<section id="projects" class="py-32 relative">
+<section id="projects" class="py-16 sm:py-24 md:py-32 relative">
   <!-- Decorative elements with Parallax -->
-  <div class="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl" appParallax [parallaxRatio]="0.08">
+  <div class="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl hidden sm:block" appParallax
+    [parallaxRatio]="0.08">
   </div>
-  <div class="absolute bottom-20 left-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" appParallax
+  <div class="absolute bottom-20 left-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl hidden sm:block" appParallax
     [parallaxRatio]="0.12"></div>
 
 
   <div class="container-custom relative z-10">
-    <div class="text-center mb-16">
-      <h2 class="text-5xl md:text-6xl font-bold mb-6">
+    <div class="text-center mb-10 md:mb-16">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6">
         <span class="text-neon font-mono-custom">&lt;</span>Featured<span class="text-neon">_</span>Projects<span
           class="text-neon font-mono-custom">/&gt;</span>
       </h2>
-      <p class="text-gray-400 text-lg font-mono-custom">Building the future, one commit at a time</p>
+      <p class="text-gray-400 text-base md:text-lg font-mono-custom">Building the future, one commit at a time</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
       <div *ngFor="let project of projects; let i = index; trackBy: trackByProject"
         class="group relative rounded-2xl overflow-hidden glass-panel reveal-child flex flex-col">
 
@@ -35,31 +36,31 @@
         </div>
 
         <!-- Content -->
-        <div class="relative pb-6 px-6 pt-12 flex flex-col h-full z-20">
+        <div class="relative pb-5 sm:pb-6 px-4 sm:px-6 pt-10 sm:pt-12 flex flex-col h-full z-20">
           <!-- Tech Tags -->
-          <div class="flex flex-wrap gap-2 mb-3 mt-3">
+          <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-3 mt-3">
             <span *ngFor="let tag of project.tags.slice(0, 3)"
-              class="text-xs font-mono-custom uppercase tracking-wider px-2.5 py-1 border border-white/20 rounded-full bg-black/60 backdrop-blur-sm text-gray-300 hover:border-primary/50 hover:text-primary transition-all">
+              class="text-[10px] sm:text-xs font-mono-custom uppercase tracking-wider px-2 sm:px-2.5 py-0.5 sm:py-1 border border-white/20 rounded-full bg-black/60 backdrop-blur-sm text-gray-300 hover:border-primary/50 hover:text-primary transition-all">
               {{ tag }}
             </span>
           </div>
 
           <!-- Metrics Badge -->
-          <div *ngIf="project.metrics" class="mb-4">
+          <div *ngIf="project.metrics" class="mb-3 sm:mb-4">
             <span
-              class="text-xs font-mono-custom px-2.5 py-1 bg-emerald-500/10 border border-emerald-400/30 rounded-full text-emerald-400 inline-flex items-center">
+              class="text-[10px] sm:text-xs font-mono-custom px-2 sm:px-2.5 py-0.5 sm:py-1 bg-emerald-500/10 border border-emerald-400/30 rounded-full text-emerald-400 inline-flex items-center">
               <i class="fas fa-check-circle mr-1"></i>{{ project.metrics }}
             </span>
           </div>
 
           <!-- Spacer to push content down -->
-          <div class="flex-grow min-h-[120px]"></div>
+          <div class="flex-grow min-h-[80px] sm:min-h-[120px]"></div>
 
           <!-- Bottom Section: Title, Description & Links -->
-          <div class="space-y-3">
+          <div class="space-y-2 sm:space-y-3">
             <!-- Title -->
             <h3
-              class="text-2xl md:text-3xl font-bold text-white group-hover:text-primary transition-colors leading-tight">
+              class="text-xl sm:text-2xl md:text-3xl font-bold text-white group-hover:text-primary transition-colors leading-tight">
               {{ project.title }}
             </h3>
 

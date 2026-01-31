@@ -1,12 +1,12 @@
 <section class="tech-showcase-section">
     <div class="container-custom">
         <!-- Section Header -->
-        <div class="text-center mb-20 reveal-fade">
+        <div class="text-center mb-12 md:mb-20 reveal-fade px-4">
             <h2
-                class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+                class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
                 <span class="text-neon">&lt;</span>Skills & Technologies<span class="text-neon">/&gt;</span>
             </h2>
-            <p class="text-gray-300 text-xl max-w-3xl mx-auto font-light">
+            <p class="text-gray-300 text-base sm:text-lg md:text-xl max-w-3xl mx-auto font-light px-2">
                 Mastering the full spectrum of modern development - from frontend frameworks to backend systems,
                 databases to mobile platforms
             </p>
@@ -14,7 +14,8 @@
 
         <!-- Galaxy Visualization -->
         <div class="tech-galaxy-wrapper">
-            <div class="tech-orbit-container" #galaxyCanvas>
+            <!-- DESKTOP VIEW: Galaxy Orbit -->
+            <div class="hidden md:block tech-orbit-container" #galaxyCanvas>
                 <!-- Central Core with enhanced visuals -->
                 <div class="central-core">
                     <div class="core-rings">
@@ -92,6 +93,70 @@
                 <div class="cosmic-particles">
                     <div *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" class="cosmic-particle"
                         [style.--particle-delay]="i * 0.3 + 's'" [style.--particle-duration]="10 + (i % 5) + 's'"></div>
+                </div>
+            </div>
+
+            <!-- MOBILE VIEW: Constellation Grid (Code Style) -->
+            <div class="block md:hidden relative z-10 px-2">
+                <div class="grid grid-cols-2 gap-4">
+                    <div *ngFor="let tech of techStack; let i = index"
+                        class="constellation-card group relative p-4 rounded-xl border border-white/10 bg-[#0a0e27]/80 backdrop-blur-md overflow-hidden hover:bg-white/5 transition-all duration-300">
+
+                        <!-- Code Decorators -->
+                        <div class="absolute top-2 left-3 text-[10px] font-mono-custom text-purple-400 opacity-70">const
+                            item =</div>
+                        <div class="absolute top-2 right-3 text-[10px] font-mono-custom text-blue-400 opacity-70">
+                            [{{i}}]</div>
+
+                        <!-- Glow Effect -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+
+                        <!-- Icon with Syntax -->
+                        <div class="relative z-10 flex flex-col items-center justify-center gap-2 mt-4">
+                            <div class="flex items-center gap-2">
+                                <span
+                                    class="text-blue-500 font-mono-custom text-lg opacity-80 group-hover:text-neon transition-colors">{{
+                                    '{' }}</span>
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all duration-300">
+                                    <svg [attr.viewBox]="'0 0 24 24'"
+                                        class="w-5 h-5 text-gray-300 group-hover:text-primary transition-colors duration-300">
+                                        <path [attr.d]="tech.svg" fill="currentColor" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="text-blue-500 font-mono-custom text-lg opacity-80 group-hover:text-neon transition-colors">{{
+                                    '}' }}</span>
+                            </div>
+
+                            <!-- Name with Blinking Cursor -->
+                            <div
+                                class="text-sm font-medium text-gray-300 group-hover:text-white transition-colors font-mono-custom">
+                                <span class="text-green-400 mr-1">name:</span>'{{ tech.name }}'<span
+                                    class="animate-blink text-neon">_</span>
+                            </div>
+                        </div>
+
+                        <!-- Animated corners -->
+                        <div
+                            class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/20 group-hover:border-primary/50 transition-colors">
+                        </div>
+                        <div
+                            class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/20 group-hover:border-primary/50 transition-colors">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Code Background Symbols -->
+                <div class="absolute -z-10 w-full h-full inset-0 overflow-hidden pointer-events-none opacity-20">
+                    <div class="absolute top-10 left-0 text-xs font-mono-custom text-primary animate-float">
+                        printf("Hello")</div>
+                    <div class="absolute top-1/2 right-0 text-xs font-mono-custom text-accent animate-float"
+                        style="animation-delay: 2s;">&lt;/&gt;</div>
+                    <div class="absolute bottom-20 left-10 text-xs font-mono-custom text-secondary animate-float"
+                        style="animation-delay: 1.5s;">if(true)</div>
                 </div>
             </div>
         </div>

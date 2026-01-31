@@ -21,6 +21,8 @@
     max-width: 900px;
     margin: 0 auto;
     padding: 4rem 0;
+    overflow: visible;
+    /* Changed to visible to prevent clipping */
 }
 
 .tech-orbit-container {
@@ -30,6 +32,8 @@
     height: 800px;
     margin: 0 auto;
     perspective: 1200px;
+    overflow: visible;
+    /* Changed to visible for full orbit visibility */
 }
 
 /* Central Core - Enhanced */
@@ -617,8 +621,28 @@
     }
 }
 
-/* Responsive */
+/* Mobile Constellation Grid Styles */
+.constellation-card {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(10, 14, 39, 0.6);
+    /* Slightly darker for code contrast */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.constellation-card:active {
+    transform: scale(0.98);
+}
+
+
+
+/* Responsive - Mobile First Approach */
+
+/* Large tablets and small desktops */
 @media (max-width: 1024px) {
+    .tech-showcase-section {
+        padding: 8rem 0;
+    }
+
     .tech-orbit-container {
         height: 700px;
         max-width: 700px;
@@ -629,39 +653,268 @@
     }
 }
 
+/* Tablets */
 @media (max-width: 768px) {
     .tech-showcase-section {
-        padding: 6rem 0;
+        padding: 5rem 0;
     }
 
-    .tech-orbit-container {
-        height: 600px;
-        max-width: 600px;
+    .tech-galaxy-wrapper {
+        padding: 2rem 0;
     }
 
-    .central-core {
-        transform: translate(-50%, -50%) scale(0.8);
-    }
-
-    .orbit-item {
-        --orbit-radius: calc(var(--orbit-radius) * 0.7) !important;
-        --icon-size: calc(var(--icon-size) * 0.7) !important;
-    }
-
-    .tech-stats-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
     .tech-orbit-container {
         height: 500px;
         max-width: 500px;
     }
 
+    .central-core {
+        transform: translate(-50%, -50%) scale(0.7);
+    }
+
+    .core-content {
+        width: 140px;
+        height: 140px;
+    }
+
+    .core-rings .ring-1 {
+        width: 160px;
+        height: 160px;
+    }
+
+    .core-rings .ring-2 {
+        width: 190px;
+        height: 190px;
+    }
+
+    .core-rings .ring-3 {
+        width: 220px;
+        height: 220px;
+    }
+
+    .core-glow {
+        width: 200px;
+        height: 200px;
+    }
+
     .orbit-item {
-        --orbit-radius: calc(var(--orbit-radius) * 0.55) !important;
-        --icon-size: calc(var(--icon-size) * 0.6) !important;
+        --orbit-radius: calc(var(--orbit-radius) * 0.6) !important;
+        --icon-size: calc(var(--icon-size) * 0.65) !important;
+    }
+
+    .tech-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 3rem;
+        padding: 0 1rem;
+    }
+
+    .stat-card {
+        padding: 1.5rem;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+}
+
+/* Large phones - 480px and below */
+@media (max-width: 480px) {
+    .tech-showcase-section {
+        padding: 4rem 0;
+        overflow: hidden;
+    }
+
+    .tech-galaxy-wrapper {
+        padding: 1rem 0;
+        overflow: visible;
+        /* Changed to visible to prevent clipping shadows */
+        margin-top: 1rem;
+    }
+
+    .tech-orbit-container {
+        height: 400px;
+        /* Increased from 340px */
+        max-width: 100%;
+        /* Changed from calc */
+        width: 100%;
+        overflow: visible;
+        /* Allow orbits to show */
+    }
+
+    .central-core {
+        transform: translate(-50%, -50%) scale(0.6);
+        /* Increased scale slightly */
+    }
+
+    .core-content {
+        width: 110px;
+        height: 110px;
+    }
+
+    .core-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .core-title {
+        font-size: 0.9rem;
+    }
+
+    .core-subtitle {
+        font-size: 0.65rem;
+    }
+
+    .core-rings .ring-1 {
+        width: 130px;
+        height: 130px;
+    }
+
+    .core-rings .ring-2 {
+        width: 155px;
+        height: 155px;
+    }
+
+    .core-rings .ring-3 {
+        width: 180px;
+        height: 180px;
+    }
+
+    .core-glow {
+        width: 150px;
+        height: 150px;
+    }
+
+    .orbit-item {
+        /* Adjusted radius to be slightly tighter but readable */
+        --orbit-radius: calc(var(--orbit-radius) * 0.42) !important;
+        --icon-size: calc(var(--icon-size) * 0.5) !important;
+    }
+
+    .bubble-label {
+        font-size: 0.6rem;
+        padding: 0.25rem 0.4rem;
+        bottom: -24px;
+        display: none;
+    }
+
+    .tech-bubble:hover .bubble-label {
+        bottom: -28px;
+    }
+
+    .stat-card {
+        padding: 1.25rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .stat-text {
+        font-size: 0.75rem;
+    }
+}
+
+/* Medium phones - 450px and below (handles 400px screens) */
+@media (max-width: 450px) {
+    .tech-orbit-container {
+        height: 380px;
+        /* Increased from 280px */
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .central-core {
+        transform: translate(-50%, -50%) scale(0.55);
+    }
+
+    .core-content {
+        width: 95px;
+        height: 95px;
+    }
+
+    .orbit-item {
+        --orbit-radius: calc(var(--orbit-radius) * 0.35) !important;
+        --icon-size: calc(var(--icon-size) * 0.45) !important;
+    }
+
+    .bubble-label {
+        display: none !important;
+    }
+}
+
+/* Small phones (iPhone SE, etc.) */
+@media (max-width: 375px) {
+    .tech-showcase-section {
+        padding: 3rem 0;
+    }
+
+    .tech-orbit-container {
+        height: 350px;
+        /* Increased from 280px */
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .central-core {
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    .core-content {
+        width: 90px;
+        height: 90px;
+    }
+
+    .core-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .core-title {
+        font-size: 0.8rem;
+    }
+
+    .core-subtitle {
+        font-size: 0.6rem;
+    }
+
+    .orbit-item {
+        --orbit-radius: calc(var(--orbit-radius) * 0.3) !important;
+        --icon-size: calc(var(--icon-size) * 0.4) !important;
+    }
+
+    .bubble-label {
+        display: none !important;
+    }
+
+    .tech-stats-grid {
+        margin-top: 1rem;
+    }
+
+    .stat-number {
+        font-size: 1.75rem;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 320px) {
+    .tech-orbit-container {
+        height: 300px;
+        /* Increased from 250px */
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .central-core {
+        transform: translate(-50%, -50%) scale(0.4);
+    }
+
+    .orbit-item {
+        --orbit-radius: calc(var(--orbit-radius) * 0.25) !important;
+        --icon-size: calc(var(--icon-size) * 0.35) !important;
+    }
+
+    .bubble-label {
+        display: none !important;
     }
 }

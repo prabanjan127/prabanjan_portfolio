@@ -276,9 +276,21 @@ h6 {
 .container-custom {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 0.75rem;
   position: relative;
   z-index: 1;
+}
+
+@media (min-width: 480px) {
+  .container-custom {
+    padding: 0 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-custom {
+    padding: 0 1.5rem;
+  }
 }
 
 .font-mono-custom {

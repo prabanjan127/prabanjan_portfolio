@@ -24,7 +24,7 @@ import { LoadingScreenComponent } from './core/components/loading-screen/loading
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
     <app-loading-screen></app-loading-screen>
     <app-header></app-header>
-    <main id="main-content" class="min-h-screen" role="main">
+    <main id="main-content" class="mt-2 min-h-screen" role="main">
       <router-outlet></router-outlet>
     </main>
     <app-footer></app-footer>

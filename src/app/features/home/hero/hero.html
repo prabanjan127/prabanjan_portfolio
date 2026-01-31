@@ -24,32 +24,16 @@
     <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
 
       <!-- Left Side: Text Content -->
-      <div class="flex-1 text-center lg:text-left w-full">
+      <div class="flex-1 text-center lg:text-left w-full pt-10 lg:pt-20 relative">
 
-        <!-- Status Badge -->
-        <div class="inline-block mb-6 animate-float">
-          <span
-            class="px-4 py-2 bg-emerald-500/10 border border-emerald-400/40 rounded-full text-xs font-mono-custom text-emerald-400 tracking-wider uppercase backdrop-blur-md animate-pulse-glow inline-flex items-center gap-2">
-            <span class="relative flex h-2 w-2">
-              <span
-                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            Crafting Digital Experiences
-          </span>
-        </div>
 
-        <!-- Scrolling Badge -->
-        <div class="absolute bottom-10 right-10 md:bottom-20 md:right-20 z-20 hidden md:block animate-fade-in-up"
-          style="animation-delay: 1s;">
-          <app-circular-badge text="DEVELOPER • CYBER ENTHUSIAST • "></app-circular-badge>
-        </div>
 
         <!-- Main Heading -->
-        <h1 #heroTitle class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight mb-4 tracking-tight">
+        <h1 #heroTitle
+          class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-4 tracking-tight">
           <span class="block text-white mb-2">Hi! I'm</span>
           <span
-            class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 animate-gradient glow-text break-words">Prabanjan</span>
+            class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 animate-gradient glow-text">Prabanjan</span>
         </h1>
 
         <!-- Animated Subtitle -->
@@ -89,14 +73,14 @@
         </div>
 
         <!-- Stats Section -->
-        <div class="grid grid-cols-3 gap-4 lg:gap-6 mt-8 pt-8 border-t border-blue-500/20">
-          <app-stat-card value="2+" colorStart="blue" colorEnd="cyan" alignment="text-center lg:text-left">
+        <div class="grid grid-cols-3 gap-2 sm:gap-4 lg:gap-6 mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-blue-500/20">
+          <app-stat-card value="2+" colorStart="blue" colorEnd="cyan" alignment="text-center">
             Years of<br />Experience
           </app-stat-card>
           <app-stat-card value="15+" colorStart="purple" colorEnd="pink" alignment="text-center">
             Projects<br />Completed
           </app-stat-card>
-          <app-stat-card value="10+" colorStart="cyan" colorEnd="emerald" alignment="text-center lg:text-right">
+          <app-stat-card value="10+" colorStart="cyan" colorEnd="emerald" alignment="text-center">
             Technologies<br />Learned
           </app-stat-card>
         </div>
@@ -110,7 +94,7 @@
       </div>
 
       <!-- Right Side: Profile Photo -->
-      <div class="flex-shrink-0 animate-float mt-8 lg:mt-0">
+      <div class="flex-shrink-0 animate-float mt-8 lg:mt-0 relative">
         <div class="relative group">
           <!-- Animated border rings -->
           <div
@@ -144,6 +128,13 @@
           <div
             class="absolute -bottom-2 -right-2 w-5 h-5 border-b-2 border-r-2 border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">
           </div>
+        </div>
+
+        <!-- Scrolling Badge (Relocated below image) -->
+        <div
+          class="absolute -bottom-16 right-0 md:-bottom-20 md:right-10 z-20 block animate-fade-in-up scale-75 md:scale-100"
+          style="animation-delay: 1s;">
+          <app-circular-badge text="CYBER ENTHUSIAST • DEVELOPER • "></app-circular-badge>
         </div>
       </div>
 
