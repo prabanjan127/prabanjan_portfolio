@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,18 +12,36 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class HeaderComponent {
   isMobileMenuOpen = false;
 
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
+
   toggleMobileMenu(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
-    // Prevent body scroll when menu is open
-    if (this.isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.overflow = this.isMobileMenuOpen ? 'hidden' : '';
     }
   }
 
   closeMobileMenu(): void {
     this.isMobileMenuOpen = false;
-    document.body.style.overflow = '';
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  navigateToSection(sectionId: string): void {
+    this.closeMobileMenu();
+    if (this.router.url === '/' || this.router.url.startsWith('/#')) {
+      if (isPlatformBrowser(this.platformId)) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+      }
+    }
+    this.router.navigate(['/'], { fragment: sectionId });
   }
 }

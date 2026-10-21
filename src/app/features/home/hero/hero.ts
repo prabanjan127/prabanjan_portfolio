@@ -1,5 +1,6 @@
-import { Component, AfterViewInit, ViewChild, ElementRef, Inject, PLATFORM_ID, ChangeDetectionStrategy } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, Inject, PLATFORM_ID, ChangeDetectionStrategy, signal } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { ThreeSceneComponent } from '../three-scene/three-scene';
 import { TechBadgeComponent } from '../../../shared/ui/tech-badge/tech-badge.component';
 import { StatCardComponent } from '../../../shared/ui/stat-card/stat-card.component';
@@ -9,14 +10,15 @@ import { ParallaxDirective } from '../../../shared/directives/parallax.directive
 import { SocialLink, Stat } from '../../../core/models/portfolio.models';
 
 /**
- * HeroComponent - Main hero section with animated introduction
- * Features GSAP animations for text and elements
+ * HeroComponent - Main hero section with role-targeted introduction
+ * Focused on Angular Developer & Front-End Engineer
  */
 @Component({
   selector: 'app-hero',
   standalone: true,
   imports: [
     CommonModule, 
+    RouterLink,
     ThreeSceneComponent,
     TechBadgeComponent,
     StatCardComponent,
@@ -32,6 +34,8 @@ export class HeroComponent implements AfterViewInit {
   @ViewChild('heroTitle') heroTitle!: ElementRef;
   @ViewChild('heroSubtitle') heroSubtitle!: ElementRef;
   @ViewChild('ctaButton') ctaButton!: ElementRef;
+
+  useHeadshot = signal<boolean>(true);
 
   /**
    * Statistics data
@@ -94,7 +98,7 @@ export class HeroComponent implements AfterViewInit {
     })
     .to(this.heroSubtitle.nativeElement, {
       duration: 2,
-      text: "Frontend Engineering: Where Art Meets Code",
+      text: "Building scalable, responsive enterprise web applications with Angular & RxJS",
       delimiter: ""
     }, "-=0.5")
     .from(this.ctaButton.nativeElement, {
@@ -102,6 +106,10 @@ export class HeroComponent implements AfterViewInit {
       opacity: 0,
       duration: 0.8
     }, "-=1");
+  }
+
+  togglePhoto(): void {
+    this.useHeadshot.update(v => !v);
   }
 
   /**

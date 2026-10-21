@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeroComponent } from './hero/hero';
+import { AboutComponent } from '../about/about.component';
 import { TimelineComponent } from '../experience/timeline/timeline';
 import { ProjectListComponent } from '../projects/project-list/project-list';
 import { TechShowcaseComponent } from '../tech-showcase/tech-showcase';
@@ -13,6 +14,7 @@ import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.dir
   imports: [
     CommonModule,
     HeroComponent,
+    AboutComponent,
     TimelineComponent,
     TechShowcaseComponent,
     ProjectListComponent,

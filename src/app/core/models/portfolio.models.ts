@@ -1,12 +1,16 @@
 export interface Project {
   title: string;
   description: string;
+  problemSolved?: string;
+  contribution?: string;
+  features?: string[];
   tags: string[];
   link: string;
   demo?: string;
   image: string;
   metrics: string;
   technologies: string[];
+  isFeaturedPrimary?: boolean;
 }
 
 export interface Stat {

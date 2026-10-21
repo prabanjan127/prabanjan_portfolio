@@ -1,114 +1,409 @@
 <section id="projects" class="py-16 sm:py-24 md:py-32 relative">
-  <!-- Decorative elements with Parallax -->
-  <div class="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl hidden sm:block" appParallax
-    [parallaxRatio]="0.08">
-  </div>
-  <div class="absolute bottom-20 left-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl hidden sm:block" appParallax
-    [parallaxRatio]="0.12"></div>
+  <!-- Decorative background blur elements -->
+  <div class="absolute top-20 right-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl hidden sm:block pointer-events-none" appParallax [parallaxRatio]="0.08"></div>
+  <div class="absolute bottom-20 left-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl hidden sm:block pointer-events-none" appParallax [parallaxRatio]="0.12"></div>
 
-
-  <div class="container-custom relative z-10">
-    <div class="text-center mb-10 md:mb-16">
-      <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6">
-        <span class="text-neon font-mono-custom">&lt;</span>Featured<span class="text-neon">_</span>Projects<span
-          class="text-neon font-mono-custom">/&gt;</span>
+  <div class="container-custom relative z-10 px-4">
+    <!-- Section Header -->
+    <div class="text-center mb-12 md:mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-400 text-xs font-mono-custom mb-3">
+        <i class="fas fa-layer-group"></i>
+        <span>Curated Engineering Portfolio</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
+        <span class="text-neon font-mono-custom">&lt;</span>Featured Projects<span class="text-neon font-mono-custom">/&gt;</span>
       </h2>
-      <p class="text-gray-400 text-base md:text-lg font-mono-custom">Building the future, one commit at a time</p>
+      <p class="text-gray-300 text-sm sm:text-base md:text-lg font-mono-custom max-w-2xl mx-auto">
+        Building scalable Angular front ends, payment lifecycles, and resilient enterprise applications.
+      </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-      <div *ngFor="let project of projects; let i = index; trackBy: trackByProject"
-        class="group relative rounded-2xl overflow-hidden glass-panel reveal-child flex flex-col">
-
-        <!-- Project Number Label -->
-        <div class="absolute top-4 left-4 z-30">
-          <div class="px-3 py-1.5 bg-black/70 backdrop-blur-sm border border-white/10 rounded-lg">
-            <span class="text-primary font-mono-custom font-bold text-xs">_{{ formatNumber(i + 1) }}</span>
+    <!-- PRIMARY FEATURED PROJECT: Angular Enterprise Admin Dashboard (Hero Card) -->
+    <div *ngIf="projects[0] as primary" class="mb-12">
+      <div class="glass-panel p-6 sm:p-8 md:p-10 rounded-3xl border-2 border-blue-500/40 relative overflow-hidden shadow-2xl shadow-blue-900/30">
+        <!-- Top Featured Badge -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-cyan-400/50 text-cyan-300 text-xs font-bold font-mono-custom">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+            <span>★ FEATURED ENTERPRISE ANGULAR PROJECT</span>
           </div>
+          <span class="text-xs font-mono-custom text-emerald-400 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-400/30">
+            <i class="fas fa-check-circle mr-1"></i>{{ primary.metrics }}
+          </span>
         </div>
 
-        <!--Project Image -->
-        <div class="absolute inset-0 overflow-hidden">
-          <img [src]="project.image" [alt]="project.title + ' screenshot'" loading="lazy"
-            class="w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700" />
-          <!-- Overlay for better text readability -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40"></div>
-        </div>
-
-        <!-- Content -->
-        <div class="relative pb-5 sm:pb-6 px-4 sm:px-6 pt-10 sm:pt-12 flex flex-col h-full z-20">
-          <!-- Tech Tags -->
-          <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-3 mt-3">
-            <span *ngFor="let tag of project.tags.slice(0, 3)"
-              class="text-[10px] sm:text-xs font-mono-custom uppercase tracking-wider px-2 sm:px-2.5 py-0.5 sm:py-1 border border-white/20 rounded-full bg-black/60 backdrop-blur-sm text-gray-300 hover:border-primary/50 hover:text-primary transition-all">
-              {{ tag }}
-            </span>
-          </div>
-
-          <!-- Metrics Badge -->
-          <div *ngIf="project.metrics" class="mb-3 sm:mb-4">
-            <span
-              class="text-[10px] sm:text-xs font-mono-custom px-2 sm:px-2.5 py-0.5 sm:py-1 bg-emerald-500/10 border border-emerald-400/30 rounded-full text-emerald-400 inline-flex items-center">
-              <i class="fas fa-check-circle mr-1"></i>{{ project.metrics }}
-            </span>
-          </div>
-
-          <!-- Spacer to push content down -->
-          <div class="flex-grow min-h-[80px] sm:min-h-[120px]"></div>
-
-          <!-- Bottom Section: Title, Description & Links -->
-          <div class="space-y-2 sm:space-y-3">
-            <!-- Title -->
-            <h3
-              class="text-xl sm:text-2xl md:text-3xl font-bold text-white group-hover:text-primary transition-colors leading-tight">
-              {{ project.title }}
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <!-- Left Col: Content & Features (7 cols) -->
+          <div class="lg:col-span-7 space-y-5">
+            <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">
+              {{ primary.title }}
             </h3>
 
-            <!-- Description -->
-            <p class="text-gray-400 text-sm leading-relaxed line-clamp-3 group-hover:text-gray-300 transition-colors">
-              {{ project.description }}
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+              {{ primary.description }}
             </p>
 
-            <!-- Action Buttons -->
-            <div class="flex items-center gap-3 pt-2">
-              <!-- GitHub Link -->
-              <a [href]="project.link" target="_blank"
-                class="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 rounded-lg text-white text-xs font-mono-custom transition-all group/btn">
-                <i class="fab fa-github"></i>
-                <span>Code</span>
-                <i
-                  class="fas fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
-              </a>
+            <!-- Problem Solved & Contribution Callouts -->
+            <div class="space-y-3 pt-1">
+              <div class="p-3.5 rounded-xl bg-slate-900/80 border border-white/10 text-xs sm:text-sm">
+                <span class="text-blue-400 font-bold font-mono-custom block mb-1">
+                  <i class="fas fa-triangle-exclamation mr-1.5 text-amber-400"></i>Problem Solved:
+                </span>
+                <span class="text-gray-300">{{ primary.problemSolved }}</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-900/80 border border-white/10 text-xs sm:text-sm">
+                <span class="text-cyan-400 font-bold font-mono-custom block mb-1">
+                  <i class="fas fa-code-commit mr-1.5 text-cyan-400"></i>My Contribution:
+                </span>
+                <span class="text-gray-300">{{ primary.contribution }}</span>
+              </div>
+            </div>
 
-              <!-- Demo Link (if available) -->
-              <a *ngIf="project.demo" [href]="project.demo" target="_blank"
-                class="flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/60 rounded-lg text-primary text-xs font-mono-custom transition-all group/btn">
-                <i class="fas fa-external-link-alt"></i>
-                <span>Demo</span>
+            <!-- Measurable Features -->
+            <div *ngIf="primary.features && primary.features.length" class="space-y-2 pt-2">
+              <h4 class="text-xs font-mono-custom uppercase tracking-wider text-gray-400">Key Measurable Features:</h4>
+              <ul class="space-y-2">
+                <li *ngFor="let feat of primary.features" class="flex items-start gap-2.5 text-xs sm:text-sm text-gray-200">
+                  <i class="fas fa-check text-cyan-400 text-xs mt-1 flex-shrink-0"></i>
+                  <span class="leading-relaxed">{{ feat }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Tech Tags -->
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span *ngFor="let tag of primary.technologies"
+                class="text-xs font-mono-custom px-3 py-1 rounded-lg bg-blue-500/10 border border-blue-400/30 text-blue-300">
+                {{ tag }}
+              </span>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center gap-4 pt-3">
+              <button type="button" (click)="openDemo()"
+                class="px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold text-xs sm:text-sm font-mono-custom rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/40 hover:scale-105 flex items-center gap-2 cursor-pointer">
+                <i class="fas fa-play-circle text-base"></i>
+                <span>Interactive Live Demo</span>
+              </button>
+
+              <a [href]="primary.link" target="_blank" rel="noopener noreferrer"
+                class="px-5 py-3 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-blue-400 text-white text-xs sm:text-sm font-mono-custom rounded-xl transition-all flex items-center gap-2">
+                <i class="fab fa-github text-base"></i>
+                <span>View GitHub Repository</span>
               </a>
             </div>
           </div>
-        </div>
 
-        <!-- Hover Glow Border -->
-        <div
-          class="absolute inset-0 border-2 border-transparent group-hover:border-primary/40 rounded-2xl transition-all duration-500 pointer-events-none">
-        </div>
-
-        <!-- Corner Accent -->
-        <div
-          class="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-all duration-700">
+          <!-- Right Col: Interactive Application Preview (5 cols) -->
+          <div class="lg:col-span-5 relative group cursor-pointer" (click)="openDemo()">
+            <div class="relative rounded-2xl overflow-hidden border-2 border-cyan-400/30 shadow-2xl shadow-blue-500/20 group-hover:border-cyan-400 transition-all duration-500">
+              <img [src]="primary.image" alt="Angular Freight Operations Admin Dashboard UI"
+                class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" />
+              <!-- Click to Launch Overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent opacity-80 group-hover:opacity-95 transition-opacity flex flex-col justify-end p-6">
+                <div class="flex items-center gap-2 text-cyan-300 font-mono-custom text-xs mb-1">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span>LIVE DEMO READY</span>
+                </div>
+                <p class="text-white font-bold text-sm sm:text-base">Click to test RBAC roles &amp; real-time search</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- View All Projects Link -->
-    <div class="text-center mt-16">
-      <a href="https://github.com/prabanjan127?tab=repositories" target="_blank"
-        class="inline-flex items-center gap-3 px-8 py-4 border-2 border-white/20 hover:border-primary text-white hover:text-primary font-mono-custom text-sm rounded-lg transition-all duration-300 hover-lift group">
-        <span>View All on GitHub</span>
+    <!-- OTHER PROJECTS GRID (5 projects) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <div *ngFor="let project of projects.slice(1); let i = index; trackBy: trackByProject"
+        class="group relative rounded-2xl overflow-hidden glass-panel border border-white/10 hover:border-blue-400/40 transition-all duration-500 flex flex-col justify-between">
+
+        <!-- Top Image Banner -->
+        <div class="relative h-48 w-full overflow-hidden bg-slate-900 border-b border-white/10">
+          <img [src]="project.image" [alt]="project.title + ' preview'" loading="lazy"
+            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+
+          <!-- Project Index Badge -->
+          <div class="absolute top-3 left-3 px-2.5 py-1 bg-black/80 backdrop-blur-sm border border-white/10 rounded-lg">
+            <span class="text-primary font-mono-custom font-bold text-xs">_{{ formatNumber(i + 2) }}</span>
+          </div>
+
+          <!-- Metrics Badge -->
+          <div *ngIf="project.metrics" class="absolute bottom-3 left-3 right-3">
+            <span class="text-[11px] font-mono-custom px-2.5 py-1 bg-black/90 border border-emerald-400/30 rounded-lg text-emerald-400 flex items-center gap-1.5 truncate">
+              <i class="fas fa-check-circle text-[10px]"></i>
+              <span class="truncate">{{ project.metrics }}</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Body Content -->
+        <div class="p-5 sm:p-6 flex flex-col flex-grow space-y-4">
+          <!-- Title -->
+          <h3 class="text-lg sm:text-xl font-bold text-white group-hover:text-primary transition-colors leading-snug">
+            {{ project.title }}
+          </h3>
+
+          <!-- Description -->
+          <p class="text-gray-300 text-xs sm:text-sm leading-relaxed line-clamp-3">
+            {{ project.description }}
+          </p>
+
+          <!-- Problem Solved Snippet -->
+          <div *ngIf="project.problemSolved" class="p-2.5 rounded-lg bg-slate-900/60 border border-white/5 text-[11px] text-gray-300">
+            <strong class="text-blue-300 font-mono-custom block mb-0.5">Problem Solved:</strong>
+            <span class="line-clamp-2">{{ project.problemSolved }}</span>
+          </div>
+
+          <!-- Measurable Features List -->
+          <div *ngIf="project.features && project.features.length" class="space-y-1.5 pt-1">
+            <div *ngFor="let feat of project.features.slice(0, 2)" class="flex items-start gap-1.5 text-[11px] text-gray-300">
+              <i class="fas fa-check text-cyan-400 text-[10px] mt-1 flex-shrink-0"></i>
+              <span class="line-clamp-2">{{ feat }}</span>
+            </div>
+          </div>
+
+          <!-- Spacer -->
+          <div class="flex-grow"></div>
+
+          <!-- Tech Tags -->
+          <div class="flex flex-wrap gap-1.5 pt-2 border-t border-white/10">
+            <span *ngFor="let tag of project.tags.slice(0, 4)"
+              class="text-[10px] font-mono-custom px-2 py-0.5 border border-white/10 rounded-md bg-white/5 text-gray-300">
+              {{ tag }}
+            </span>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex items-center gap-3 pt-2">
+            <a [href]="project.link" target="_blank" rel="noopener noreferrer"
+              class="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 rounded-lg text-white text-xs font-mono-custom transition-all group/btn">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+              <i class="fas fa-arrow-right text-[10px] transform group-hover/btn:translate-x-0.5 transition-transform"></i>
+            </a>
+
+            <a *ngIf="project.demo" [href]="project.demo" target="_blank" rel="noopener noreferrer"
+              class="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/60 rounded-lg text-primary text-xs font-mono-custom transition-all">
+              <i class="fas fa-external-link-alt text-[10px]"></i>
+              <span>Live Demo</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- View All on GitHub Link -->
+    <div class="text-center mt-14 sm:mt-16">
+      <a href="https://github.com/prabanjan127?tab=repositories" target="_blank" rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 px-8 py-4 border-2 border-white/20 hover:border-primary text-white hover:text-primary font-mono-custom text-sm rounded-xl transition-all duration-300 hover:scale-105 group bg-[#0a0e27]/50 backdrop-blur-md">
+        <span>Explore All 15+ Repositories on GitHub</span>
         <i class="fab fa-github text-xl group-hover:rotate-12 transition-transform"></i>
       </a>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- INTERACTIVE MODAL: Angular Freight Operations Hub Demo   -->
+  <!-- ======================================================== -->
+  <div *ngIf="isDemoOpen()"
+    class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md overflow-y-auto animate-fadeIn"
+    role="dialog" aria-modal="true" aria-labelledby="modal-title">
+
+    <div class="relative w-full max-w-5xl bg-[#090d24] border-2 border-cyan-400/40 rounded-2xl shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col">
+      <!-- Modal Header Bar -->
+      <div class="px-5 py-4 border-b border-white/10 bg-[#0f1738] flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-blue-400">
+            <i class="fab fa-angular text-xl"></i>
+          </div>
+          <div>
+            <h3 id="modal-title" class="text-white font-bold text-base sm:text-lg flex items-center gap-2">
+              <span>Freight Operations &amp; Logistics Hub</span>
+              <span class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono-custom border border-emerald-400/30">
+                Angular 19 Demo
+              </span>
+            </h3>
+            <p class="text-gray-400 text-xs font-mono-custom">Interactive demonstration of Role-Based Access Control, RxJS streams &amp; search</p>
+          </div>
+        </div>
+
+        <!-- Close Button -->
+        <button type="button" (click)="closeDemo()"
+          class="p-2 text-gray-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors focus-visible:ring-2 focus-visible:ring-cyan-400 outline-none"
+          aria-label="Close demo modal">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+
+      <!-- Notification Banner -->
+      <div *ngIf="demoNotification()" class="bg-blue-600/20 border-b border-blue-400/30 px-5 py-2 text-xs font-mono-custom text-blue-300 flex items-center gap-2 animate-fadeIn">
+        <i class="fas fa-info-circle text-cyan-400"></i>
+        <span>{{ demoNotification() }}</span>
+      </div>
+
+      <!-- Controls & Role Selector Bar -->
+      <div class="p-4 sm:p-6 border-b border-white/10 bg-[#070b1e] space-y-4">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <!-- Role Selector (RBAC demonstration) -->
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="text-xs font-mono-custom text-gray-400 flex items-center gap-1.5 mr-1">
+              <i class="fas fa-id-badge text-cyan-400"></i>Active RBAC Role:
+            </span>
+            <button type="button" (click)="setRole('Admin')"
+              [class.bg-blue-600]="activeRole() === 'Admin'"
+              [class.text-white]="activeRole() === 'Admin'"
+              [class.bg-white/5]="activeRole() !== 'Admin'"
+              [class.text-gray-400]="activeRole() !== 'Admin'"
+              class="px-3 py-1.5 rounded-lg border border-blue-400/30 text-xs font-mono-custom transition-all cursor-pointer">
+              Administrator (Full Access)
+            </button>
+            <button type="button" (click)="setRole('Dispatcher')"
+              [class.bg-purple-600]="activeRole() === 'Dispatcher'"
+              [class.text-white]="activeRole() === 'Dispatcher'"
+              [class.bg-white/5]="activeRole() !== 'Dispatcher'"
+              [class.text-gray-400]="activeRole() !== 'Dispatcher'"
+              class="px-3 py-1.5 rounded-lg border border-purple-400/30 text-xs font-mono-custom transition-all cursor-pointer">
+              Dispatcher (Operations)
+            </button>
+            <button type="button" (click)="setRole('Viewer')"
+              [class.bg-emerald-600]="activeRole() === 'Viewer'"
+              [class.text-white]="activeRole() === 'Viewer'"
+              [class.bg-white/5]="activeRole() !== 'Viewer'"
+              [class.text-gray-400]="activeRole() !== 'Viewer'"
+              class="px-3 py-1.5 rounded-lg border border-emerald-400/30 text-xs font-mono-custom transition-all cursor-pointer">
+              Auditor (Read-Only)
+            </button>
+          </div>
+
+          <!-- Refresh Action -->
+          <button type="button" (click)="simulateRefresh()" [disabled]="isRefreshing()"
+            class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono-custom text-gray-300 flex items-center gap-2 cursor-pointer">
+            <i class="fas fa-sync-alt" [class.fa-spin]="isRefreshing()"></i>
+            <span>Simulate RxJS Refresh</span>
+          </button>
+        </div>
+
+        <!-- Search and Filter Bar -->
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+          <!-- Search Input -->
+          <div class="sm:col-span-7 relative">
+            <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+            <input type="text" [(ngModel)]="searchQuery"
+              placeholder="Search by Shipment ID, Origin, Destination, Carrier..."
+              class="w-full pl-9 pr-4 py-2 bg-slate-900 border border-white/10 rounded-xl text-white text-xs font-mono-custom focus:border-cyan-400 focus:bg-slate-800 transition-all outline-none" />
+          </div>
+
+          <!-- Status Filters -->
+          <div class="sm:col-span-5 flex flex-wrap gap-1.5">
+            <button *ngFor="let st of ['All', 'In Transit', 'Delivered', 'Delayed', 'Dispatched']"
+              type="button" (click)="setStatusFilter(st)"
+              [class.bg-cyan-500]="selectedStatus() === st"
+              [class.text-black]="selectedStatus() === st"
+              [class.bg-white/5]="selectedStatus() !== st"
+              [class.text-gray-300]="selectedStatus() !== st"
+              class="px-2.5 py-1 rounded-md text-[11px] font-mono-custom border border-white/10 transition-colors cursor-pointer">
+              {{ st }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shipments Table (Scrollable) -->
+      <div class="sm:hidden px-4 pt-3 pb-1 text-[11px] text-gray-400 font-mono-custom flex items-center justify-between bg-[#080d22] border-b border-white/5">
+        <span class="flex items-center gap-1.5 text-cyan-300">
+          <i class="fas fa-arrows-left-right text-xs"></i>
+          <span>Swipe table horizontally</span>
+        </span>
+        <span class="text-[10px] text-gray-500">{{ filteredShipments().length }} records</span>
+      </div>
+
+      <div class="flex-grow overflow-x-auto p-4 sm:p-6">
+        <table class="w-full text-left border-collapse min-w-[650px]">
+          <thead>
+            <tr class="border-b border-white/10 text-[11px] font-mono-custom text-gray-400 uppercase tracking-wider">
+              <th class="pb-3 pl-2">Shipment ID</th>
+              <th class="pb-3">Origin &rarr; Destination</th>
+              <th class="pb-3">Carrier</th>
+              <th class="pb-3">Status</th>
+              <th class="pb-3">Estimated ETA</th>
+              <th *ngIf="activeRole() === 'Admin'" class="pb-3">Revenue (Admin Only)</th>
+              <th class="pb-3 text-right pr-2">RBAC Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5 text-xs font-mono-custom">
+            <tr *ngFor="let s of filteredShipments()" class="hover:bg-white/5 transition-colors">
+              <td class="py-3 pl-2 text-cyan-400 font-bold">{{ s.id }}</td>
+              <td class="py-3 text-white">
+                <span>{{ s.origin }}</span>
+                <span class="text-gray-500 mx-1">&rarr;</span>
+                <span>{{ s.destination }}</span>
+              </td>
+              <td class="py-3 text-gray-300">{{ s.carrier }}</td>
+              <td class="py-3">
+                <span [ngClass]="{
+                  'bg-emerald-500/20 text-emerald-400 border-emerald-400/30': s.status === 'Delivered',
+                  'bg-blue-500/20 text-blue-400 border-blue-400/30': s.status === 'In Transit',
+                  'bg-amber-500/20 text-amber-400 border-amber-400/30': s.status === 'Delayed',
+                  'bg-purple-500/20 text-purple-400 border-purple-400/30': s.status === 'Dispatched'
+                }" class="px-2 py-0.5 rounded border text-[10px] font-semibold">
+                  {{ s.status }}
+                </span>
+              </td>
+              <td class="py-3 text-gray-300">{{ s.eta }}</td>
+              <td *ngIf="activeRole() === 'Admin'" class="py-3 text-emerald-400 font-semibold">
+                ${{ s.revenue | number }}
+              </td>
+              <td class="py-3 text-right pr-2">
+                <!-- Action permissions based on active role -->
+                <div class="inline-flex items-center gap-1.5 justify-end">
+                  <button *ngIf="activeRole() === 'Admin' || activeRole() === 'Dispatcher'"
+                    type="button" (click)="showNotification('Dispatched carrier signal for ' + s.id)"
+                    class="px-2 py-1 rounded bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 text-[10px] transition-colors"
+                    title="Update Status">
+                    <i class="fas fa-edit mr-1"></i>Update
+                  </button>
+                  <button *ngIf="activeRole() === 'Admin'"
+                    type="button" (click)="showNotification('Deleted order record ' + s.id + ' (Admin audit logged)')"
+                    class="px-2 py-1 rounded bg-red-500/20 hover:bg-red-500/30 text-red-300 text-[10px] transition-colors"
+                    title="Delete Record">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                  <span *ngIf="activeRole() === 'Viewer'" class="text-[10px] text-gray-500 italic">
+                    Read-only
+                  </span>
+                </div>
+              </td>
+            </tr>
+
+            <tr *ngIf="filteredShipments().length === 0">
+              <td colspan="7" class="py-8 text-center text-gray-400">
+                <i class="fas fa-inbox text-3xl mb-2 text-gray-500 block"></i>
+                <span>No freight records matching your criteria.</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-5 py-3 border-t border-white/10 bg-[#070b1e] flex flex-wrap items-center justify-between text-xs font-mono-custom text-gray-400">
+        <div>
+          <span>Showing <strong>{{ filteredShipments().length }}</strong> of {{ allShipments.length }} freight orders</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="https://github.com/prabanjan127/angular_freight_admin_dashboard" target="_blank" rel="noopener noreferrer"
+            class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1.5">
+            <i class="fab fa-github"></i>
+            <span>View Architecture on GitHub</span>
+          </a>
+          <button type="button" (click)="closeDemo()"
+            class="px-4 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer">
+            Close Demo
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </section>

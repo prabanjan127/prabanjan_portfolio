@@ -1,19 +1,18 @@
 <section class="tech-showcase-section">
     <div class="container-custom">
         <!-- Section Header -->
-        <div class="text-center mb-12 md:mb-20 reveal-fade px-4">
+        <div class="text-center mb-12 md:mb-16 reveal-fade px-4">
             <h2
                 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
-                <span class="text-neon">&lt;</span>Skills & Technologies<span class="text-neon">/&gt;</span>
+                <span class="text-neon">&lt;</span>Skills &amp; Technologies<span class="text-neon">/&gt;</span>
             </h2>
             <p class="text-gray-300 text-base sm:text-lg md:text-xl max-w-3xl mx-auto font-light px-2">
-                Mastering the full spectrum of modern development - from frontend frameworks to backend systems,
-                databases to mobile platforms
+                Focused on building reliable Angular front ends and growing full-stack engineering skills.
             </p>
         </div>
 
         <!-- Galaxy Visualization -->
-        <div class="tech-galaxy-wrapper">
+        <div class="tech-galaxy-wrapper mb-16">
             <!-- DESKTOP VIEW: Galaxy Orbit -->
             <div class="hidden md:block tech-orbit-container" #galaxyCanvas>
                 <!-- Central Core with enhanced visuals -->
@@ -31,8 +30,8 @@
                             </svg>
                         </div>
                         <div class="core-text">
-                            <div class="core-title">Full Stack</div>
-                            <div class="core-subtitle">Developer</div>
+                            <div class="core-title">Angular &amp;</div>
+                            <div class="core-subtitle">Front-End</div>
                         </div>
                     </div>
                     <div class="core-glow"></div>
@@ -98,14 +97,14 @@
 
             <!-- MOBILE VIEW: Constellation Grid (Code Style) -->
             <div class="block md:hidden relative z-10 px-2">
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-3 sm:gap-4">
                     <div *ngFor="let tech of techStack; let i = index"
-                        class="constellation-card group relative p-4 rounded-xl border border-white/10 bg-[#0a0e27]/80 backdrop-blur-md overflow-hidden hover:bg-white/5 transition-all duration-300">
+                        class="constellation-card group relative p-3 sm:p-4 rounded-xl border border-white/10 bg-[#0a0e27]/80 backdrop-blur-md overflow-hidden hover:bg-white/5 transition-all duration-300">
 
                         <!-- Code Decorators -->
-                        <div class="absolute top-2 left-3 text-[10px] font-mono-custom text-purple-400 opacity-70">const
-                            item =</div>
-                        <div class="absolute top-2 right-3 text-[10px] font-mono-custom text-blue-400 opacity-70">
+                        <div class="absolute top-2 left-2.5 text-[9px] font-mono-custom text-purple-400 opacity-70">const
+                            tech =</div>
+                        <div class="absolute top-2 right-2.5 text-[9px] font-mono-custom text-blue-400 opacity-70">
                             [{{i}}]</div>
 
                         <!-- Glow Effect -->
@@ -114,49 +113,99 @@
                         </div>
 
                         <!-- Icon with Syntax -->
-                        <div class="relative z-10 flex flex-col items-center justify-center gap-2 mt-4">
-                            <div class="flex items-center gap-2">
-                                <span
-                                    class="text-blue-500 font-mono-custom text-lg opacity-80 group-hover:text-neon transition-colors">{{
-                                    '{' }}</span>
+                        <div class="relative z-10 flex flex-col items-center justify-center gap-1.5 mt-3">
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-blue-500 font-mono-custom text-sm opacity-80 group-hover:text-neon transition-colors">{{ '{' }}</span>
                                 <div
-                                    class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all duration-300">
+                                    class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all duration-300">
                                     <svg [attr.viewBox]="'0 0 24 24'"
-                                        class="w-5 h-5 text-gray-300 group-hover:text-primary transition-colors duration-300">
+                                        class="w-4 h-4 text-gray-300 group-hover:text-primary transition-colors duration-300">
                                         <path [attr.d]="tech.svg" fill="currentColor" />
                                     </svg>
                                 </div>
-                                <span
-                                    class="text-blue-500 font-mono-custom text-lg opacity-80 group-hover:text-neon transition-colors">{{
-                                    '}' }}</span>
+                                <span class="text-blue-500 font-mono-custom text-sm opacity-80 group-hover:text-neon transition-colors">{{ '}' }}</span>
                             </div>
 
-                            <!-- Name with Blinking Cursor -->
-                            <div
-                                class="text-sm font-medium text-gray-300 group-hover:text-white transition-colors font-mono-custom">
-                                <span class="text-green-400 mr-1">name:</span>'{{ tech.name }}'<span
-                                    class="animate-blink text-neon">_</span>
+                            <!-- Name -->
+                            <div class="text-xs font-medium text-gray-300 group-hover:text-white transition-colors font-mono-custom text-center leading-tight">
+                                {{ tech.name }}
                             </div>
                         </div>
 
                         <!-- Animated corners -->
-                        <div
-                            class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/20 group-hover:border-primary/50 transition-colors">
-                        </div>
-                        <div
-                            class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/20 group-hover:border-primary/50 transition-colors">
-                        </div>
+                        <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/20 group-hover:border-primary/50 transition-colors"></div>
+                        <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/20 group-hover:border-primary/50 transition-colors"></div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- Floating Code Background Symbols -->
-                <div class="absolute -z-10 w-full h-full inset-0 overflow-hidden pointer-events-none opacity-20">
-                    <div class="absolute top-10 left-0 text-xs font-mono-custom text-primary animate-float">
-                        printf("Hello")</div>
-                    <div class="absolute top-1/2 right-0 text-xs font-mono-custom text-accent animate-float"
-                        style="animation-delay: 2s;">&lt;/&gt;</div>
-                    <div class="absolute bottom-20 left-10 text-xs font-mono-custom text-secondary animate-float"
-                        style="animation-delay: 1.5s;">if(true)</div>
+        <!-- Categorized Skills Matrix for Recruiter Fast-Scanning -->
+        <div class="mb-14">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- Group 1: Core Angular & Frontend -->
+                <div class="p-5 rounded-2xl border-2 border-blue-500/30 bg-[#0a0e27]/80 backdrop-blur-md hover:border-blue-400 transition-all">
+                    <div class="flex items-center gap-2.5 mb-3 text-blue-400">
+                        <i class="fab fa-angular text-xl"></i>
+                        <h3 class="font-bold text-white text-base font-mono-custom">Core Angular &amp; Frontend</h3>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-3">Primary technical focus for scalable enterprise UIs</p>
+                    <ul class="space-y-1.5 text-xs text-gray-300 font-mono-custom">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-[10px]"></i> Angular (v16 - v19)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-[10px]"></i> TypeScript &amp; JavaScript</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-[10px]"></i> RxJS Reactive Streams</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-[10px]"></i> Angular Material &amp; PrimeNG</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-[10px]"></i> HTML5, CSS3, Tailwind CSS</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-[10px]"></i> REST APIs &amp; Interceptors</li>
+                    </ul>
+                </div>
+
+                <!-- Group 2: Enterprise Backend & Data -->
+                <div class="p-5 rounded-2xl border border-white/10 bg-[#0a0e27]/80 backdrop-blur-md hover:border-purple-400/50 transition-all">
+                    <div class="flex items-center gap-2.5 mb-3 text-purple-400">
+                        <i class="fas fa-server text-lg"></i>
+                        <h3 class="font-bold text-white text-base font-mono-custom">Backend &amp; Data</h3>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-3">Services, relational querying &amp; integration</p>
+                    <ul class="space-y-1.5 text-xs text-gray-300 font-mono-custom">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400 text-[10px]"></i> C# &amp; .NET Core</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400 text-[10px]"></i> ASP.NET Web APIs</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400 text-[10px]"></i> SQL (MySQL, MSSQL)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400 text-[10px]"></i> Git &amp; GitHub Version Control</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400 text-[10px]"></i> API Contract Negotiation</li>
+                    </ul>
+                </div>
+
+                <!-- Group 3: Networking & Security -->
+                <div class="p-5 rounded-2xl border border-white/10 bg-[#0a0e27]/80 backdrop-blur-md hover:border-cyan-400/50 transition-all">
+                    <div class="flex items-center gap-2.5 mb-3 text-cyan-400">
+                        <i class="fas fa-shield-alt text-lg"></i>
+                        <h3 class="font-bold text-white text-base font-mono-custom">Networking &amp; Security</h3>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-3">Certified network fundamentals &amp; secure coding</p>
+                    <ul class="space-y-1.5 text-xs text-gray-300 font-mono-custom">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-[10px]"></i> CCNA Networking Fundamentals</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-[10px]"></i> Role-Based Access Control (RBAC)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-[10px]"></i> Secure Frontend Coding &amp; Auth</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-[10px]"></i> Linux / Bash Shell Scripting</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-[10px]"></i> TCP/IP, DNS, HTTP/HTTPS</li>
+                    </ul>
+                </div>
+
+                <!-- Group 4: Familiar With / Secondary Tools -->
+                <div class="p-5 rounded-2xl border border-white/10 bg-[#0a0e27]/80 backdrop-blur-md hover:border-emerald-400/50 transition-all">
+                    <div class="flex items-center gap-2.5 mb-3 text-emerald-400">
+                        <i class="fas fa-toolbox text-lg"></i>
+                        <h3 class="font-bold text-white text-base font-mono-custom">Familiar With &amp; Tools</h3>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-3">Secondary technologies &amp; utilities</p>
+                    <ul class="space-y-1.5 text-xs text-gray-300 font-mono-custom">
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-emerald-400 text-[10px]"></i> Node.js &amp; Express</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-emerald-400 text-[10px]"></i> Postman &amp; API Testing</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-emerald-400 text-[10px]"></i> Java &amp; Python Scripting</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-emerald-400 text-[10px]"></i> Flutter Mobile Basics</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-emerald-400 text-[10px]"></i> VS Code &amp; Chrome DevTools</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -164,19 +213,19 @@
         <!-- Enhanced Stats -->
         <div class="tech-stats-grid reveal-slide">
             <div class="stat-card">
-                <div class="stat-icon">⚡</div>
-                <div class="stat-number">11+</div>
-                <div class="stat-text">Technologies</div>
+                <div class="stat-icon">🅰️</div>
+                <div class="stat-number">Angular</div>
+                <div class="stat-text">Core Specialization</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔒</div>
+                <div class="stat-number">RBAC &amp; CCNA</div>
+                <div class="stat-text">Secure Architecture</div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon">🚀</div>
-                <div class="stat-number">∞</div>
-                <div class="stat-text">Possibilities</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">💡</div>
-                <div class="stat-number">100%</div>
-                <div class="stat-text">Passion</div>
+                <div class="stat-number">Enterprise</div>
+                <div class="stat-text">Freight Operations UI</div>
             </div>
         </div>
     </div>

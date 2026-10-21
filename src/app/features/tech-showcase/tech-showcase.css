@@ -445,7 +445,8 @@
 }
 
 .stat-number {
-    font-size: 3rem;
+    font-size: clamp(1.25rem, 2.8vw, 1.85rem);
+    line-height: 1.2;
     font-weight: 800;
     background: linear-gradient(135deg, var(--primary), var(--accent));
     -webkit-background-clip: text;
@@ -453,10 +454,11 @@
     background-clip: text;
     margin-bottom: 0.5rem;
     transition: all 0.4s;
+    word-break: break-word;
 }
 
 .stat-card:hover .stat-number {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .stat-text {
@@ -714,7 +716,7 @@
     }
 
     .stat-number {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
     }
 }
 
@@ -892,7 +894,7 @@
     }
 
     .stat-number {
-        font-size: 1.75rem;
+        font-size: 1.25rem;
     }
 }
 
